@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import GetImage from '../hooks/getImage';
+import GetImage from './getImage';
+import styles from './Weather.module.css';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -27,9 +28,11 @@ const Weather = () => {
         getSearchCity(searchWithQuery);
     }
   return (
-    <div>
-        <input type='text' value={city} onChange={(e) => setCity(e.target.value)}/>
-        <button onClick={handleSearch}>Pesquisar</button> 
+    <div className={styles.weatherContent}>
+        <div className='inputWeather'>
+            <input type='text' value={city} onChange={(e) => setCity(e.target.value)}/>
+            <button onClick={handleSearch}>Pesquisar</button> 
+        </div>
         {weatherData && (
             <div>
                 <h2>Temos Dados</h2>
