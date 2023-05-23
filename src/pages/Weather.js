@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import GetImage from './getImage';
 import styles from './Weather.module.css';
+import { MdLocationOn } from "react-icons/md";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -29,12 +30,14 @@ const Weather = () => {
     }
   return (
     <div className={styles.weatherContent}>
-        <div className='inputWeather'>
+        <div className={styles.inputWeather}>
             <input type='text' value={city} onChange={(e) => setCity(e.target.value)}/>
-            <button onClick={handleSearch}>Pesquisar</button> 
+            <button onClick={handleSearch}>
+                <MdLocationOn/>
+            </button> 
         </div>
         {weatherData && (
-            <div>
+            <div className={styles.cardInfo}>
                 <h2>Temos Dados</h2>
                 <p>{weatherData.location.name}</p>
                 <p>{weatherData.current.temp_c}ºC</p>
