@@ -14,10 +14,9 @@ const GetImage = ({query}) => {
             const queryUrl = `${apiUrlUnsplash}query=${query}&client_id=${apiAcessKeyUnplash}&lang=pt`;
             const response = await fetch(queryUrl);
             const jsonData = await response.json();
-            setImage(jsonData.results[0]?.urls?.regular);
-            console.log(image);
+            setImage(jsonData.results[0]?.urls?.regular);        
         } catch(error){
-            console.log(error);
+            console.log("Erro", error);
         }
     }
 
