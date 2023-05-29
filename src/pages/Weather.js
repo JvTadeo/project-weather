@@ -11,20 +11,33 @@ const Weather = () => {
     const [city, setCity] = useState('');
     const [searchCity, setsearchCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
-
+    const [loading, setLoading] = useState();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const getSearchCity = async (url) => {
-        try{
+        try{           
             const response = await fetch(url);
+
+            if(!response.ok){
+                throw new Error(response.status);                                
+            }
+
             const jsonData = await response.json();
             setsearchCity(city);
             setWeatherData(jsonData);
+            setLoading(false);            
+            setErrorMessage('');
+
         } catch(error){
-            console.log(error);
+            //console.error('Erro(Meu):', error.message);
+            setErrorMessage("Cidade não encontrada");
+            setLoading(false);
         }
     }
 
     const handleSearch = () => {
+        if(city === '')return;        
+        setLoading(true);
         const searchWithQuery = `${apiUrl}?key=${apiKey}&q=${city}`;
         getSearchCity(searchWithQuery);
     }
@@ -36,13 +49,23 @@ const Weather = () => {
                 <MdLocationOn/>
             </button> 
         </div>
-        {weatherData && (
+        {loading &&(
+            <div className={styles.loading}></div>
+        )}
+        {weatherData && loading === false && !errorMessage ? (
             <div className={styles.cardInfo}>
-                <h2>Temos Dados</h2>
-                <p>{weatherData.location.name}</p>
-                <p>{weatherData.current.temp_c}ºC</p>
-                <img src={weatherData.current.condition.icon}/>
                 <GetImage query={searchCity}/>
+                <h2>{weatherData.location.name}</h2>
+                <div className={styles.spaceDiv}></div>
+                <div className={styles.iconWeather} >
+                    <p>{weatherData.current.temp_c}ºC</p>
+                    <img src={weatherData.current.condition.icon}/>
+                </div>
+            </div>
+        ): null }
+        {errorMessage && (
+            <div>
+                <p className={styles.alert}>Cidade não encontrada</p>
             </div>
         )}
     </div>
