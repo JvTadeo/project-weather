@@ -44,7 +44,7 @@ const Weather = () => {
   return (
     <div className={styles.weatherContent}>
         <div className={styles.inputWeather}>
-            <input type='text' value={city} onChange={(e) => setCity(e.target.value)} placeholder='Digite a cidade'/>
+            <input type='text' value={city} onChange={(e) => setCity(e.target.value)} placeholder='Digite uma cidade'/>
             <button onClick={handleSearch}>
                 <MdLocationOn/>
             </button> 
