@@ -38,7 +38,7 @@ const Weather = () => {
     const handleSearch = () => {
         if(city === '')return;        
         setLoading(true);
-        const searchWithQuery = `${apiUrl}?key=${apiKey}&q=${city}`;
+        const searchWithQuery = `${apiUrl}?key=${apiKey}&q=${city}&lang=pt`;
         getSearchCity(searchWithQuery);
     }
   return (
