@@ -3,15 +3,13 @@ import React, { useEffect, useState } from 'react';
 const apiAcessKeyUnplash = process.env.REACT_APP_API_ACCESSKEY;
 const apiUrlUnsplash = process.env.REACT_APP_API_URL_UNSPLASH;
 
-const GetImage = ({query}) => {
-
+const useImageAPI = () => {
     const [image, setImage] = useState('');
 
-    const getSearchImage = async (query) => {
+    const getImage = async (cityName) => {
         try{
-            if(!query) return;
-
-            const queryUrl = `${apiUrlUnsplash}query=${query}&client_id=${apiAcessKeyUnplash}&lang=pt`;
+            if(!cityName) return;
+            const queryUrl = `${apiUrlUnsplash}query=${cityName}&client_id=${apiAcessKeyUnplash}&lang=en`;
             const response = await fetch(queryUrl);
             const jsonData = await response.json();
             setImage(jsonData.results[0]?.urls?.regular);        
@@ -20,14 +18,7 @@ const GetImage = ({query}) => {
         }
     }
 
-    useEffect(() => {
-        getSearchImage(query);
-    }, [query]);
-  return (
-    <div>
-         {image && <img src={image} alt="Imagem" />}
-    </div>
-  )
+  return ({getImage, image})
 }
 
-export default GetImage
+export default useImageAPI

@@ -1,15 +1,29 @@
-# Projeto Weather
+# Weather App
+Weather App is a React and Tailwind-based application that utilizes the Weatherapi and Unsplash APIs. This app retrieves the current weather for a searched city, along with sunrise, sunset, and moon phase information, along with an image of the searched location.
 
-## Sobre o projeto
-Esse projeto foi feito para fins de estudos e prática sobre a biblioteca React para o JavaScript.
-Você faz a pesquisa com o nome da cidade e ele retorna o clima daquele lugar em tempo real e uma imagem do local.
-Para isso, foi utilizado a API do WeatherAPI e Unsplash para as imagens.
+# Technologies Used
+- HTML
+- CSS (with Tailwind CSS)
+- React.js
 
-## Exemplo bem sucedido
-Nesta primeira imagem, temos a pesquisa São Paulo e é retornada uma foto da cidade a temperatura e um icone do tempo.
+# Installation
+To get started with this project, follow these steps:
+- Use `git clone https://github.com/JvTadeo/project-weather.git` to clone this repository.
+- Once you have cloned the project, navigate to the project directory: `cd project-weather`
+- Next, you need to install the project dependencies. Run the following command: `npm install`
+- Now, simply run `npm start` to start the server.
 
-![Exemplo de uma cidade pesquisada](public/imgs/view1.png)
+Now you're all set up and ready to use the project
 
-## Exemplo de cidade não encontrada
-Quando você pesquisa uma cidade que não existe, ele dá um retorno dizendo que essa cidade naõ foi encontrada.
-![Exemplo de cidade não encontrada](public/imgs/view2.png)
+# Images
+>Index
+
+<img src="./public/imgs/Weather_App_Index.png" width="650" alt="Weather App Index">
+
+> Search City
+
+<img src="./public/imgs/Weather_App_City_Search.png" width="650" alt="Weather App Search City">
+
+> City Not Found
+
+<img src="./public/imgs/Weather_App_Not_Found.png" width="650" alt="Weather App City not found">
